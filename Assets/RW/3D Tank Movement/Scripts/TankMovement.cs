@@ -25,6 +25,16 @@ public class TankMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        Move();
+        Turn();
     }
+
+    private void Turn()
+    {
+        float turn = turnInput * turnSpeed * Time.deltaTime;
+
+        Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
+        tankRigidBody.MoveRotation(tankRigidBody.rotation * turnRotation);
+    }
+
 }
