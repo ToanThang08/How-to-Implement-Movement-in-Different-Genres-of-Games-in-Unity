@@ -34,6 +34,27 @@ public class CattoMovement : MonoBehaviour
     {
         cattoIsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ground);
         moveInput = Input.GetAxis("Horizontal");
+
+        if (cattoIsGrounded)
+        {
+            cattoAnimator.SetFloat("Velocity", Mathf.Abs(moveInput));
+        }
+
+        if (Input.GetButtonDown("Jump") && cattoIsGrounded)
+        {
+            cattoIsJumping = true;
+            cattoAnimator.SetTrigger("Jump");
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && cattoIsGrounded)
+        {
+            cattoAnimator.SetBool("Crouch", true);
+        }
+
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            cattoAnimator.SetBool("Crouch", false);
+        }
     }
 
     private void FixedUpdate()
