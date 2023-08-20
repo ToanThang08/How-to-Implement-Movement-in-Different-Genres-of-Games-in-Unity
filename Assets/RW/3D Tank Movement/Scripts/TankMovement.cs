@@ -37,4 +37,11 @@ public class TankMovement : MonoBehaviour
         tankRigidBody.MoveRotation(tankRigidBody.rotation * turnRotation);
     }
 
+    private void Move()
+    {
+        Vector3 movement = transform.forward * movementInput * tankSpeed * Time.deltaTime;
+
+        tankRigidBody.MovePosition(tankRigidBody.position + movement);
+    }
+
 }
