@@ -61,4 +61,14 @@ public class CattoMovement : MonoBehaviour
     {
 
     }
+
+    private void FlipCatto()
+    {
+        cattoIsFacingRight = !cattoIsFacingRight;
+
+        Vector3 cattoScale = transform.localScale;
+        cattoScale.x *= -1;
+
+        transform.localScale = cattoScale;
+    }
 }
